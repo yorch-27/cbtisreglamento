@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Análisis jurídico · Reglamento CBTis No. 36</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1E2A38;
+    --ink-soft:#3A4658;
+    --paper:#F6F4EE;
+    --paper-alt:#ECE8DD;
+    --wine:#7C2E33;
+    --wine-deep:#5A2024;
+    --gold:#A9863F;
+    --slate:#6B7280;
+    --line:#D9D3C4;
+    --white:#FFFCF6;
+    --ff-display: 'Fraunces', serif;
+    --ff-body: 'IBM Plex Sans', sans-serif;
+    --ff-mono: 'IBM Plex Mono', monospace;
+    box-sizing:border-box;
+    padding-top: env(safe-area-inset-top,0px);
+    padding-bottom: env(safe-area-inset-bottom,0px);
+  }
+  *,*::before,*::after{box-sizing:inherit}
+  html{scroll-behavior:smooth; scroll-padding-top: calc(78px + env(safe-area-inset-top,0px));}
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#EDE8DC; --ink-soft:#C9C2B2; --paper:#181510; --paper-alt:#221E17;
+      --wine:#D98A8E; --wine-deep:#E3A6A9; --gold:#D9B872; --slate:#9C9587; --line:#3A3427; --white:#1F1B14;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#EDE8DC; --ink-soft:#C9C2B2; --paper:#181510; --paper-alt:#221E17;
+    --wine:#D98A8E; --wine-deep:#E3A6A9; --gold:#D9B872; --slate:#9C9587; --line:#3A3427; --white:#1F1B14;
+  }
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--ff-body); line-height:1.6; font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%}
+  a{color:inherit}
+
+  /* ---------- top bar ---------- */
+  header.top{
+    position:sticky; top:0; z-index:50;
+    padding-top: env(safe-area-inset-top,0px);
+    background:var(--paper);
+    background:color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .top-inner{
+    max-width:1080px; margin:0 auto; padding:14px 24px;
+    display:flex; align-items:center; gap:20px; justify-content:space-between;
+  }
+  .brand{
+    font-family:var(--ff-display); font-weight:600; font-size:1.02rem;
+    display:flex; align-items:baseline; gap:8px; white-space:nowrap;
+  }
+  .brand .mark{
+    font-family:var(--ff-mono); font-size:.7rem; color:var(--wine);
+    border:1px solid var(--wine); border-radius:2px; padding:2px 5px;
+  }
+  nav.pills{ display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; }
+  nav.pills::-webkit-scrollbar{display:none}
+  nav.pills a{
+    font-size:.82rem; text-decoration:none; color:var(--slate);
+    padding:6px 11px; border-radius:20px; white-space:nowrap;
+    transition:color .15s ease, background .15s ease;
+  }
+  nav.pills a:hover{color:var(--ink)}
+  nav.pills a.active{ background:var(--ink); color:var(--paper); }
+
+  /* ---------- layout helpers ---------- */
+  .wrap{ max-width:1080px; margin:0 auto; padding:0 24px; }
+  .prose{ max-width:680px; }
+  section{ padding:76px 0; border-bottom:1px solid var(--line); }
+  section:last-of-type{ border-bottom:none; }
+  .eyebrow{
+    font-family:var(--ff-mono); font-size:.72rem; color:var(--wine);
+    letter-spacing:.02em;
+  }
+  h2.section-title{
+    font-family:var(--ff-display); font-weight:600; font-size:clamp(1.7rem,3.4vw,2.5rem);
+    margin:.3em 0 .5em; line-height:1.15;
+  }
+  h3{ font-family:var(--ff-display); font-weight:600; font-size:1.25rem; margin:1.6em 0 .5em; }
+  p{ margin:.7em 0; color:var(--ink-soft); }
+  strong{ color:var(--ink); }
+  .lede{ font-size:1.08rem; color:var(--ink-soft); }
+
+  /* ---------- hero ---------- */
+  .hero{ padding:70px 0 60px; }
+  .hero .kicker{
+    font-family:var(--ff-mono); font-size:.78rem; color:var(--wine);
+    display:flex; align-items:center; gap:10px; margin-bottom:18px;
+  }
+  .hero .kicker::before{ content:""; width:26px; height:1px; background:var(--wine); display:inline-block; }
+  h1{
+    font-family:var(--ff-display); font-weight:700; font-size:clamp(2.1rem,5.4vw,3.6rem);
+    line-height:1.06; margin:0 0 .45em; max-width:15ch;
+  }
+  h1 em{ font-style:italic; color:var(--wine); }
+  .hero-sub{ font-size:1.12rem; max-width:56ch; color:var(--ink-soft); }
+  .fact-row{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    gap:0; margin-top:44px; border-top:1px solid var(--line);
+  }
+  .fact{ padding:18px 20px 18px 0; border-right:1px solid var(--line); }
+  .fact:last-child{ border-right:none; }
+  .fact .num{ font-family:var(--ff-display); font-size:1.5rem; font-weight:600; color:var(--wine); display:block; }
+  .fact .lab{ font-size:.78rem; color:var(--slate); margin-top:2px; }
+
+  .callout{
+    background:var(--paper-alt); border:1px solid var(--line); border-left:3px solid var(--gold);
+    padding:16px 20px; font-size:.92rem; color:var(--ink-soft); border-radius:2px; margin:1.4em 0;
+  }
+  .callout strong{ color:var(--ink); }
+
+  /* ---------- accordion (14 vicios) ---------- */
+  .vlist{ margin-top:28px; border-top:1px solid var(--line); }
+  .vitem{ border-bottom:1px solid var(--line); }
+  .vitem button.vhead{
+    width:100%; text-align:left; background:none; border:none; cursor:pointer;
+    padding:20px 0; display:flex; align-items:flex-start; gap:18px; color:var(--ink);
+    font-family:var(--ff-body);
+  }
+  .vitem .vn{
+    font-family:var(--ff-mono); font-size:.8rem; color:var(--wine); flex:0 0 30px; padding-top:3px;
+  }
+  .vitem .vtitle{ flex:1; }
+  .vitem .vtitle .vt-main{ font-family:var(--ff-display); font-size:1.08rem; font-weight:600; }
+  .vitem .vtitle .vt-art{ font-size:.8rem; color:var(--slate); margin-top:3px; }
+  .vitem .vchev{ flex:0 0 auto; color:var(--slate); transition:transform .25s ease; margin-top:6px; }
+  .vitem[open] .vchev{ transform:rotate(45deg); }
+  .vbody{
+    display:grid; grid-template-rows:0fr; transition:grid-template-rows .3s ease;
+  }
+  .vitem[open] .vbody{ grid-template-rows:1fr; }
+  .vbody-in{ overflow:hidden; min-height:0; padding:0 0 24px 48px; color:var(--ink-soft); font-size:.95rem; max-width:620px; }
+  .vbody-in ul{ padding-left:1.1em; margin:.6em 0; }
+  .vbody-in li{ margin:.35em 0; }
+  .vbody-in .fund{
+    font-family:var(--ff-mono); font-size:.74rem; color:var(--wine); margin-top:.8em; display:block;
+  }
+
+  /* ---------- tabs (art 35-e) ---------- */
+  .article-box{
+    background:var(--white); border:1px solid var(--line); border-radius:3px; padding:26px 28px; margin:24px 0 32px;
+  }
+  .article-box .tag{ font-family:var(--ff-mono); font-size:.72rem; color:var(--wine); }
+  .article-box blockquote{
+    font-family:var(--ff-display); font-size:1.18rem; font-style:italic; line-height:1.45; margin:.6em 0 0; color:var(--ink);
+  }
+  .article-box .sanc{ margin-top:14px; font-size:.86rem; color:var(--slate); }
+  .tabbar{ display:flex; gap:6px; flex-wrap:wrap; margin:30px 0 0; border-bottom:1px solid var(--line); }
+  .tabbar button{
+    font-family:var(--ff-body); font-size:.88rem; font-weight:500; background:none; border:none; cursor:pointer;
+    color:var(--slate); padding:10px 4px; margin-right:22px; border-bottom:2px solid transparent; margin-bottom:-1px;
+  }
+  .tabbar button.active{ color:var(--wine); border-bottom-color:var(--wine); }
+  .tabpanel{ display:none; padding-top:26px; max-width:660px; }
+  .tabpanel.active{ display:block; }
+
+  /* proportionality chart */
+  .pchart{ margin:20px 0 8px; }
+  .pbar-row{ display:grid; grid-template-columns:190px 1fr 74px; align-items:center; gap:14px; margin:14px 0; }
+  .pbar-label{ font-size:.85rem; color:var(--ink-soft); }
+  .pbar-label b{ display:block; color:var(--ink); font-weight:600; font-size:.87rem; }
+  .pbar-track{ background:var(--paper-alt); border-radius:2px; height:10px; position:relative; overflow:hidden; }
+  .pbar-fill{ height:100%; border-radius:2px; width:0; transition:width 1s cubic-bezier(.2,.8,.2,1); }
+  .pbar-val{ font-family:var(--ff-mono); font-size:.78rem; color:var(--slate); text-align:right; }
+  .pchart .note{ font-size:.78rem; color:var(--slate); margin-top:6px; }
+
+  .test-grid{ display:grid; gap:14px; margin-top:10px; }
+  .test-row{ display:grid; grid-template-columns:150px 1fr; gap:16px; padding:14px 0; border-top:1px solid var(--line); }
+  .test-row .tk{ font-family:var(--ff-display); font-weight:600; font-size:.95rem; }
+  .test-row p{ margin:0; font-size:.9rem; }
+
+  /* ---------- rights grid ---------- */
+  .rights-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1px; background:var(--line); margin-top:30px; border:1px solid var(--line); }
+  .rcard{ background:var(--paper); padding:24px; }
+  .rcard .rn{ font-family:var(--ff-mono); font-size:.75rem; color:var(--wine); }
+  .rcard h4{ font-family:var(--ff-display); font-size:1.02rem; font-weight:600; margin:.4em 0 .5em; }
+  .rcard p{ font-size:.85rem; margin:.4em 0; }
+  .rcard .vulnera{ font-size:.8rem; color:var(--wine-deep); margin-top:.8em; }
+  .rcard .fundamento{ font-size:.74rem; color:var(--slate); font-family:var(--ff-mono); margin-top:.5em; display:block; }
+
+  /* ---------- synthesis ---------- */
+  .synth-grid{ display:grid; grid-template-columns:1.3fr 1fr; gap:48px; margin-top:34px; }
+  @media (max-width:760px){ .synth-grid{ grid-template-columns:1fr; } }
+  .synth-col h4{
+    font-family:var(--ff-mono); font-size:.76rem; text-transform:none; color:var(--slate);
+    margin:0 0 18px; padding-bottom:10px; border-bottom:1px solid var(--line);
+  }
+  .synth-col.core h4{ color:var(--wine); }
+  .synth-item{ display:flex; gap:14px; padding:13px 0; border-bottom:1px dashed var(--line); align-items:flex-start; }
+  .synth-item .si-n{ font-family:var(--ff-mono); font-size:.75rem; color:var(--slate); padding-top:2px; }
+  .synth-item p{ margin:0; font-size:.9rem; color:var(--ink); }
+  .synth-col.core .synth-item .si-n{ color:var(--wine); }
+
+  footer{ padding:50px 0 calc(50px + env(safe-area-inset-bottom,0px)); }
+  footer p{ font-size:.8rem; color:var(--slate); max-width:640px; }
+  footer .fline{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:20px; }
+  footer .brand2{ font-family:var(--ff-display); font-weight:600; }
+
+  ::selection{ background:var(--wine); color:var(--white); }
+
+  @media (max-width:640px){
+    section{ padding:52px 0; }
+    .top-inner{ padding:12px 16px; gap:12px; }
+    .wrap{ padding:0 18px; }
+    .fact-row{ grid-template-columns:repeat(2,1fr); }
+    .vbody-in{ padding-left:0; }
+    .synth-grid{ gap:30px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="brand"><span class="mark">ART. 35-e</span> Reglamento CBTis 36</div>
+    <nav class="pills" id="navPills">
+      <a href="#antecedentes">Antecedentes</a>
+      <a href="#vicios">Vicios generales</a>
+      <a href="#nucleo">Art. 35, inciso e)</a>
+      <a href="#derechos">Derechos vulnerados</a>
+      <a href="#sintesis">Síntesis</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero wrap" id="top">
+    <div class="kicker">Análisis jurídico integral · Febrero–Julio 2026</div>
+    <h1>El reglamento que sanciona un <em>abrazo prolongado</em> igual que un arma blanca.</h1>
+    <p class="hero-sub">Revisión del Reglamento General de los Alumnos y Alumnas del CBTis No. 36 "Hermanas González Guajardo" (Monclova, Coahuila), a partir del escrito de inconformidad presentado el 7 de septiembre de 2026 contra el artículo 35, inciso e) — y una auditoría del resto del texto normativo.</p>
+    <div class="fact-row">
+      <div class="fact"><span class="num">14</span><span class="lab">vicios generales detectados</span></div>
+      <div class="fact"><span class="num">4</span><span class="lab">vicios en el art. 35, inciso e)</span></div>
+      <div class="fact"><span class="num">9</span><span class="lab">derechos humanos comprometidos</span></div>
+      <div class="fact"><span class="num">3–5</span><span class="lab">días de suspensión por un abrazo</span></div>
+    </div>
+    <div class="callout">Este documento es un análisis con fines de argumentación y organización de un caso; no sustituye la asesoría de un abogado postulante ni constituye una resolución vinculante.</div>
+  </section>
+
+  <!-- ANTECEDENTES -->
+  <section class="wrap" id="antecedentes">
+    <div class="prose">
+      <div class="eyebrow">I. Antecedentes</div>
+      <h2 class="section-title">Un reglamento firmado bajo presión, impugnado por primera vez</h2>
+      <p>El CBTis No. 36 (clave 05DC0179O) exige la firma del alumno y de su padre, madre o tutor como condición para el ejercicio de derechos escolares — incluida una manifestación de consentimiento para "Operativos de Revisión de Útiles Escolares". El texto se organiza en Disposiciones Generales, Derechos, Obligaciones, Normas de Control Escolar, Disciplina y Convivencia, Prohibiciones, Sanciones y una tabla de faltas graves y no graves.</p>
+      <p>El <strong>7 de septiembre de 2026</strong> se presentó un escrito de inconformidad contra el <strong>artículo 35, inciso e)</strong>, que tipifica como falta grave "realizar actos contrarios a la moral y buenas costumbres como por ejemplo besarse boca a boca, recostarse, hacer tocamientos, abrazos prolongados" — sancionado en el numeral 20 de la tabla con <strong>3 a 5 días de suspensión</strong> y reporte al expediente.</p>
+      <p>El escrito desarrolla tres ejes: violación al principio de taxatividad (art. 14 constitucional), falta de razonabilidad en la sanción (art. 22) y violación al libre desarrollo de la personalidad, apoyado en la tesis de la Primera Sala de la SCJN sobre tatuajes (registro 2021265) y en el Amparo 31/2023. Este documento amplía ese análisis al resto del reglamento.</p>
+    </div>
+  </section>
+
+  <!-- 14 VICIOS GENERALES -->
+  <section class="wrap" id="vicios">
+    <div class="eyebrow">II. Inconstitucionalidades generales</div>
+    <h2 class="section-title">Catorce vicios detectados en el conjunto del reglamento</h2>
+    <p class="prose lede">Más allá del artículo impugnado, la revisión integral encuentra fallas repetidas de técnica normativa — agrupadas aquí por el derecho o principio constitucional que cada una compromete. Toca cada punto para ver su desarrollo.</p>
+
+    <div class="vlist" id="vlist"></div>
+  </section>
+
+  <!-- NÚCLEO: ART 35-e -->
+  <section class="wrap" id="nucleo">
+    <div class="eyebrow">III. Análisis específico</div>
+    <h2 class="section-title">Artículo 35, inciso e) — cuatro vicios en una sola frase</h2>
+    <p class="prose lede">Esta disposición concentra, de manera simultánea, cuatro vicios constitucionales autónomos. Cada uno bastaría por sí solo para sustentar la inconformidad; juntos hacen el caso particularmente sólido.</p>
+
+    <div class="article-box">
+      <span class="tag">Art. 35, inciso e) · Numeral 20 de la tabla de sanciones</span>
+      <blockquote>"Realizar actos contrarios a la moral y buenas costumbres como por ejemplo besarse boca a boca, recostarse; hacer tocamientos, abrazos prolongados."</blockquote>
+      <div class="sanc">Sanción correlativa: 3 a 5 días de suspensión de clases + reporte al expediente.</div>
+    </div>
+
+    <div class="tabbar" id="tabbar">
+      <button data-tab="certa" class="active">III.1 Lex certa</button>
+      <button data-tab="stricta">III.2 Lex stricta</button>
+      <button data-tab="prop">III.3 Proporcionalidad</button>
+      <button data-tab="libre">III.4 Libre desarrollo</button>
+    </div>
+
+    <div class="tabpanel active" data-panel="certa">
+      <p>El subprincipio de <strong>lex certa</strong> exige que la norma describa la conducta con densidad suficiente para ser comprendida sin reenvíos a criterios subjetivos. Ninguno de los tres supuestos del inciso e) lo supera:</p>
+      <ul>
+        <li><strong>"Recostarse":</strong> no especifica sobre qué superficie, objeto o persona — en su literalidad, incluiría recostar la cabeza sobre el propio pupitre por cansancio.</li>
+        <li><strong>"Tocamientos":</strong> el verbo "tocar" es de aplicación universal; no distingue un contacto accidental, un saludo o un empujón involuntario de una conducta de connotación sexual.</li>
+        <li><strong>"Abrazos prolongados":</strong> no se cuantifica el elemento temporal; ningún estudiante puede saber, antes de actuar, si su abrazo configura la infracción.</li>
+      </ul>
+      <p>La norma delega en el criterio subjetivo de quien la aplica la determinación de qué conducta es sancionable — justo lo que el principio de taxatividad busca impedir.</p>
+    </div>
+
+    <div class="tabpanel" data-panel="stricta">
+      <p>El subprincipio de <strong>lex stricta</strong> prohíbe extender la norma por analogía a supuestos no contemplados. Aquí el vicio no está en la redacción del tipo, sino en que el propio reglamento habilita esa extensión:</p>
+      <ul>
+        <li>La cláusula final — "los casos no previstos… serán competencia y a consideración del Comité Técnico Consultivo cuya decisión será inapelable" — convierte al Comité en legislador y juzgador a la vez: puede sancionar por "consideración" conductas no tipificadas.</li>
+        <li>Como el tipo del inciso e) ya es abierto, y no existe mecanismo que impida su extensión, cualquier interacción física que el personal considere semejante a "tocamientos" puede sancionarse por analogía.</li>
+      </ul>
+      <p>Es un vicio autónomo: aunque se redactara el tipo con mayor precisión, mientras subsista la cláusula de "casos no previstos" con decisión inapelable, el sistema sancionador carece de aplicación estricta.</p>
+    </div>
+
+    <div class="tabpanel" data-panel="prop">
+      <p>El artículo 22 constitucional proscribe las penas inusitadas y desproporcionadas. La tabla de sanciones equipara una manifestación afectiva consentida con conductas de lesividad objetivamente distinta:</p>
+      <div class="pchart" id="pchart"></div>
+      <p class="note">Rango de días de suspensión por numeral de la tabla de sanciones (el numeral 20 no acredita afectación a terceros; los demás sí comprometen un bien jurídico concreto).</p>
+      <p>Un examen mínimo de razonabilidad exige verificar si hay relación lógica entre conducta y sanción, si se justificó agrupar conductas tan distintas bajo el mismo rango, y si la equiparación resulta comprensible para un destinatario razonable. La disposición no supera ninguno de los tres extremos.</p>
+    </div>
+
+    <div class="tabpanel" data-panel="libre">
+      <p>El derecho al libre desarrollo de la personalidad, derivado de la dignidad humana (art. 1° constitucional), protege la elección y materialización de planes de vida sin intervención injustificada — incluidas las manifestaciones afectivas consentidas.</p>
+      <div class="callout"><strong>Tesis 2021265, Primera Sala SCJN</strong> (Amparo Directo en Revisión 4865/2018): el uso de tatuajes está protegido por el libre desarrollo de la personalidad. Si ese derecho protege algo tan visible como un tatuaje, con mayor razón protege una interacción afectiva privada y consentida.</div>
+      <p>En el <strong>Juicio de Amparo 31/2023</strong> (caso análogo), la autoridad judicial determinó que la escuela vulneró el libre desarrollo de la personalidad de una estudiante, y estableció que la firma del reglamento por los padres no blinda de control constitucional una disposición injustificada.</p>
+      <div class="test-grid">
+        <div class="test-row"><div class="tk">Fin perseguido</div><p>"La moral y las buenas costumbres" no es, por sí solo, un fin objetivo: es un concepto subjetivo y variable.</p></div>
+        <div class="test-row"><div class="tk">Idoneidad</div><p>La suspensión no es idónea para "corregir" una manifestación afectiva que no incide en seguridad ni convivencia.</p></div>
+        <div class="test-row"><div class="tk">Necesidad</div><p>Existen medidas menos lesivas — un llamado de atención verbal — sin necesidad de suspensión ni reporte al expediente.</p></div>
+        <div class="test-row"><div class="tk">Proporcionalidad estricta</div><p>El beneficio pretendido no compensa privar al alumno del derecho a la educación por varios días.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DERECHOS HUMANOS -->
+  <section class="wrap" id="derechos">
+    <div class="eyebrow">IV. Derechos humanos vulnerados</div>
+    <h2 class="section-title">Nueve derechos comprometidos por el reglamento</h2>
+    <p class="prose lede">La generalidad del alumnado son niñas, niños y adolescentes — lo que activa el interés superior de la niñez como eje transversal de todo el catálogo.</p>
+    <div class="rights-grid" id="rightsGrid"></div>
+  </section>
+
+  <!-- SÍNTESIS -->
+  <section class="wrap" id="sintesis">
+    <div class="eyebrow">V. Síntesis y jerarquización</div>
+    <h2 class="section-title">Del argumento más sólido al de refuerzo</h2>
+    <p class="prose lede">La combinación de imprecisión del tipo (lex certa), habilitación de aplicación analógica (lex stricta), desproporción de la sanción y afectación a un derecho protegido por precedente directo de la SCJN dota al caso de una solidez que ningún argumento aislado alcanzaría por sí solo.</p>
+    <div class="synth-grid">
+      <div class="synth-col core">
+        <h4>Núcleo del caso</h4>
+        <div id="coreList"></div>
+      </div>
+      <div class="synth-col">
+        <h4>Argumentos de refuerzo</h4>
+        <div id="refList"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <div class="fline">
+    <span class="brand2">Análisis jurídico · CBTis 36</span>
+    <span style="font-family:var(--ff-mono);font-size:.75rem;color:var(--slate)">Monclova, Coahuila</span>
+  </div>
+  <p>Documento elaborado a partir de la revisión del Reglamento General de los Alumnos y Alumnas del CBTis No. 36 (clave 05DC0179O), vigente para el periodo febrero-julio de 2026, y del escrito de inconformidad presentado el 7 de septiembre de 2026 respecto del artículo 35, inciso e). Constituye un análisis jurídico estructurado con fines de argumentación y organización de un caso; no sustituye la asesoría de un abogado postulante ni constituye una resolución vinculante. Las tesis y precedentes citados corresponden a los invocados en el escrito de inconformidad revisado.</p>
+</footer>
+
+<script>
+/* ---------------- DATA ---------------- */
+const vicios = [
+  {n:1, t:"Violación al principio de taxatividad / tipicidad", art:"Artículo 14 constitucional", body:`<p>La SCJN ha reconocido que la taxatividad, de origen penal, es aplicable a infracciones y sanciones administrativas (tesis 1011669, Acción de Inconstitucionalidad 4/2006). Incurren en este vicio:</p>
+    <ul>
+      <li>Art. 35-e: "besarse boca a boca, recostarse, tocamientos, abrazos prolongados" (ver sección III).</li>
+      <li>Art. 35-b: prohíbe difundir "cualquier información" de alumnos y personal, sin distinguir contenido lícito de ilícito.</li>
+      <li>Art. 29: exige "comportamiento digno que enaltezca el nombre de la institución" fuera de la escuela — estándar moral sin parámetro objetivo.</li>
+      <li>Art. 34-f: prohíbe "lenguaje altisonante/soez" sin definir léxico ni contexto.</li>
+      <li>Art. 26-e: prohíbe accesorios "que pudieran ocasionar un accidente", delegando en apreciación subjetiva del docente.</li>
+    </ul>`},
+  {n:2, t:"Falta de proporcionalidad en la gradación de sanciones", art:"Artículo 22 constitucional", body:`<p>El art. 22 proscribe penas inusitadas y desproporcionadas y exige individualizar la sanción según la lesividad real:</p>
+    <ul>
+      <li>Art. 35-e y numeral 20: 3–5 días equiparados, dentro de "faltas graves", a riñas, robo o introducción de armas blancas.</li>
+      <li>Arts. 37–38: acumular 3 reportes de indisciplina no grave (mascar chicle, portar gorra, "circular entre jardines") desencadena citatorio, suspensión y pérdida de la carta de buena conducta; un cuarto reporte implica baja automática.</li>
+      <li>Numerales 18, 19 y 21: vapear o consumir alcohol tiene el mismo rango de sanción (hasta baja) que agresiones físicas o robo.</li>
+    </ul>`},
+  {n:3, t:"Violación al libre desarrollo de la personalidad", art:"Artículo 1° constitucional", body:`<p>Protege elegir y materializar planes de vida sin intervención injustificada, incluida la apariencia personal.</p>
+    <ul>
+      <li>Art. 26-c: exige "corte natural sin tintes".</li>
+      <li>Art. 26-d: exige "afeitados" (obligación de rasurarse).</li>
+      <li>Art. 26-e: prohíbe aretes, piercings, uñas largas o accesorios.</li>
+      <li>Art. 5-j: uniforme diferenciado por género (falda/pantalón) sin excepciones para identidad de género no normativa.</li>
+    </ul>`},
+  {n:4, t:"Violación a la garantía de audiencia y al debido proceso", art:"Artículos 14 y 17 constitucionales", body:`<ul>
+      <li>Cláusula final: "los casos no previstos… serán competencia y a consideración del Comité Técnico Consultivo cuya decisión será inapelable" — niega un recurso efectivo.</li>
+      <li>Ningún artículo describe un procedimiento previo a la sanción que garantice ser oído y ofrecer pruebas; el art. 5-h regula la queja del alumno hacia la autoridad, no su defensa cuando es él el acusado.</li>
+      <li>Las sanciones de baja (numerales 22, 29 y 31) se aplican de forma directa, sin gradación ni mecanismo de defensa explícito.</li>
+    </ul>`},
+  {n:5, t:"Posible exceso de competencia y aplicación extraterritorial", art:"Principio non bis in idem", body:`<p>El art. 29 sanciona "antecedentes penales" o hechos "consignados por la autoridad" fuera de la escuela. Es cuestionable que la institución se arrogue facultad sancionadora sobre hechos ajenos a su ámbito de tutela cuando ya existe sanción de la autoridad competente.</p>`},
+  {n:6, t:"Restricción al derecho de asociación", art:"Artículo 9° constitucional", body:`<p>El art. 5-i prohíbe de forma absoluta participar en "actividades sindicales o de naturaleza laboral" del personal, sin acotar la prohibición a un conflicto de interés real.</p>`},
+  {n:7, t:"Afectación al derecho a la educación por rigidez procedimental", art:"Artículo 3° constitucional", body:`<p>El art. 21 exige la credencial "sin excepción alguna" para exámenes extraordinarios, sin prever fuerza mayor (robo, pérdida, trámite de reposición), lo que puede privar del derecho a examinarse por una causa ajena al desempeño académico.</p>`},
+  {n:8, t:"Causal de expulsión sin ningún supuesto de hecho definido", art:"Artículo 12, inciso c)", body:`<p>Establece la baja definitiva —la sanción más severa e irreversible— porque el alumno sea dado de baja "como medida preventiva o disciplinaria del plantel", sin definir conducta ni procedimiento previo.</p>
+    <div class="fund">Es el vicio de lex certa más grave de todo el reglamento: a diferencia del art. 35-e, ni siquiera enuncia ejemplos de conducta.</div>`},
+  {n:9, t:"Sanciones no previstas en el propio catálogo cerrado", art:"Artículo 39", body:`<p>El art. 39 declara un catálogo taxativo de sanciones: a) suspensión, b) baja. Sin embargo la tabla aplica reiteradamente consecuencias fuera de ese catálogo: "pérdida de carta de buena conducta" (num. 1), "citatorio a padres" (num. 1 y 14), "carta compromiso" (num. 16–18, 21, 23, 25, 28, 30) y "reponer el daño" (num. 11, 24, 27).</p>
+    <div class="fund">Vicio de legalidad autónomo: nulla poena sine lege exige que también la sanción esté predeterminada, no solo la conducta.</div>`},
+  {n:10, t:"Ausencia de ajustes razonables por discapacidad, enfermedad o embarazo", art:"Artículo 1°, párrafo 5° constitucional", body:`<p>El límite de 5 años para acreditar el plan de estudios (arts. 12-b y 14) y el 80% de asistencia para extraordinario (art. 20) se aplican sin ajustes razonables para discapacidad, enfermedad crónica o embarazo — posible discriminación indirecta.</p>`},
+  {n:11, t:"Comité Técnico Consultivo sin reglas de composición ni imparcialidad", art:"Garantía de debido proceso", body:`<p>El Comité resuelve disciplina (art. 3), determina sanciones (art. 40) y decide de forma inapelable los "casos no previstos" — pero ningún artículo define quiénes lo integran, cómo se nombra a sus miembros ni qué garantiza su imparcialidad.</p>`},
+  {n:12, t:'Aplicación extraterritorial ampliada ("alrededores del plantel")', art:"Artículo 35, inciso c)", body:`<p>Sanciona vapear "dentro y en los alrededores del plantel" sin delimitar qué se entiende por "alrededores", extendiendo la potestad disciplinaria a un espacio público ajeno a su control físico.</p>`},
+  {n:13, t:"Indefinición de frontera entre los incisos e) y f) del art. 35", art:"Refuerza el vicio de lex certa", body:`<p>El inciso f) sanciona "sexo oral, relaciones sexuales o coito" con 5–10 días hasta baja. El reglamento no traza frontera clara con el inciso e), dejando a la autoridad decidir sin parámetro objetivo en cuál tipo ubica una conducta.</p>`},
+  {n:14, t:'"Faltas colectivas" sin definición', art:"Artículos 6°, 7° y 9° constitucionales", body:`<p>El art. 35-a sanciona "organizar y participar en faltas colectivas" sin definir el término. En su literalidad podría alcanzar una protesta o paro pacífico tanto como un acto de indisciplina masiva, desincentivando el ejercicio legítimo de la libertad de expresión y reunión.</p>`},
+];
+
+const derechos = [
+  {n:"01", t:"Libre desarrollo de la personalidad", f:"Art. 1° constitucional · tesis SCJN 2021265", v:"Art. 26 c)-e) (cabello, afeitado, piercings); Art. 35-e (manifestaciones afectivas)."},
+  {n:"02", t:"Igualdad y no discriminación", f:"Art. 1°, párr. 5° constitucional · Art. 24 CADH", v:"Art. 5-j (uniforme binario obligatorio); efecto en Art. 26-d."},
+  {n:"03", t:"Derecho a la educación", f:"Art. 3° constitucional · Art. 13 PIDESC · Art. 28 CDN", v:"Sanciones de suspensión (Art. 39-a) y baja (Art. 39-b) por conductas imprecisas o desproporcionadas."},
+  {n:"04", t:"Debido proceso y garantía de audiencia", f:"Arts. 14 y 17 constitucionales · Art. 8 CADH", v:'Cláusula de "decisión inapelable" del Comité; ausencia de procedimiento de defensa previo.'},
+  {n:"05", t:"Privacidad e intimidad", f:"Art. 16 constitucional · Art. 11 CADH · Art. 16 CDN", v:'Cláusula de "Operativos de Revisión de Útiles Escolares" sin causa individualizada.'},
+  {n:"06", t:"Libertad de expresión e información", f:"Arts. 6° y 7° constitucionales · Art. 13 CADH", v:"Art. 35 b) y j) — prohibición amplia de difundir información o dañar la imagen institucional."},
+  {n:"07", t:"Libertad de asociación", f:"Art. 9° constitucional · Art. 16 CADH", v:"Art. 5-i — prohibición total de actividades sindicales o laborales."},
+  {n:"08", t:"Interés superior de la niñez", f:"Art. 4° constitucional · Art. 3 CDN · LGDNNA", v:"Principio rector transversal; no se menciona como criterio de ponderación al sancionar."},
+  {n:"09", t:"Integridad personal y no sufrir tratos degradantes", f:"Arts. 1° y 22 constitucionales · Art. 5 CADH", v:"Art. 35-e — equiparar una muestra afectiva con faltas de riesgo físico puede leerse como estigmatización desproporcionada."},
+];
+
+const core = [
+  "Causal de expulsión sin ningún supuesto de hecho definido (Art. 12-c) — el vicio de lex certa más grave de todo el reglamento.",
+  "Falta de lex certa en el Art. 35-e — imprecisión del tipo sancionador.",
+  'Falta de lex stricta por la cláusula de "casos no previstos" con decisión inapelable.',
+  "Sanciones no previstas en el propio catálogo cerrado (Art. 39 vs. la tabla).",
+  "Falta de proporcionalidad en la gradación frente a conductas de lesividad distinta (Art. 22).",
+  "Violación al libre desarrollo de la personalidad, con apoyo en la tesis 2021265 y el Amparo 31/2023.",
+  "Violación al derecho a la educación, como consecuencia directa de la sanción.",
+  "Violación a la garantía de audiencia y al debido proceso.",
+  "El interés superior de la niñez, como eje transversal que refuerza cada argumento.",
+];
+const ref = [
+  "Indefinición de frontera entre los incisos e) y f) del Art. 35.",
+  'Libertad de expresión y reunión frente a la sanción de "faltas colectivas" sin definición.',
+  "Libertad de expresión frente a las cláusulas de difusión de información e imagen institucional.",
+  "Igualdad de género en el uniforme y ausencia de ajustes razonables por salud.",
+  'Libertad de asociación y exceso de competencia extraterritorial ("alrededores del plantel").',
+];
+
+const propData = [
+  {label:"Num. 20", sub:"Besarse, recostarse, tocamientos, abrazos prolongados", min:3, max:5, cap:10, color:"var(--wine)"},
+  {label:"Num. 24", sub:"Robar, dañar o esconder artículos ajenos", min:3, max:10, cap:10, color:"var(--gold)"},
+  {label:"Num. 23", sub:"Agresiones físicas/verbales, acoso, bullying", min:5, max:10, cap:10, color:"var(--slate)"},
+  {label:"Num. 28", sub:"Introducir armas blancas o químicos peligrosos", min:5, max:10, cap:10, color:"var(--slate)"},
+];
+
+/* ---------------- RENDER: 14 vicios ---------------- */
+const vlist = document.getElementById('vlist');
+vicios.forEach(v=>{
+  const item = document.createElement('div');
+  item.className = 'vitem';
+  item.innerHTML = `
+    <button class="vhead" aria-expanded="false">
+      <span class="vn">${String(v.n).padStart(2,'0')}</span>
+      <span class="vtitle"><span class="vt-main">${v.t}</span><span class="vt-art">${v.art}</span></span>
+      <span class="vchev">+</span>
+    </button>
+    <div class="vbody"><div class="vbody-in">${v.body}</div></div>`;
+  const btn = item.querySelector('button');
+  btn.addEventListener('click', ()=>{
+    const open = item.hasAttribute('open');
+    if(open){ item.removeAttribute('open'); btn.setAttribute('aria-expanded','false'); }
+    else{ item.setAttribute('open',''); btn.setAttribute('aria-expanded','true'); }
+  });
+  vlist.appendChild(item);
+});
+
+/* ---------------- RENDER: rights grid ---------------- */
+const rg = document.getElementById('rightsGrid');
+derechos.forEach(d=>{
+  const c = document.createElement('div');
+  c.className = 'rcard';
+  c.innerHTML = `<div class="rn">${d.n}</div><h4>${d.t}</h4>
+    <p class="vulnera">Vulnerado por: ${d.v}</p>
+    <span class="fundamento">${d.f}</span>`;
+  rg.appendChild(c);
+});
+
+/* ---------------- RENDER: synthesis ---------------- */
+const coreList = document.getElementById('coreList');
+core.forEach((c,i)=>{
+  const el = document.createElement('div');
+  el.className = 'synth-item';
+  el.innerHTML = `<span class="si-n">${String(i+1).padStart(2,'0')}</span><p>${c}</p>`;
+  coreList.appendChild(el);
+});
+const refList = document.getElementById('refList');
+ref.forEach((c,i)=>{
+  const el = document.createElement('div');
+  el.className = 'synth-item';
+  el.innerHTML = `<span class="si-n">${String(i+1).padStart(2,'0')}</span><p>${c}</p>`;
+  refList.appendChild(el);
+});
+
+/* ---------------- RENDER: proportionality chart ---------------- */
+const pchart = document.getElementById('pchart');
+propData.forEach(p=>{
+  const row = document.createElement('div');
+  row.className = 'pbar-row';
+  row.innerHTML = `
+    <div class="pbar-label"><b>${p.label}</b>${p.sub}</div>
+    <div class="pbar-track"><div class="pbar-fill" style="background:${p.color}"></div></div>
+    <div class="pbar-val">${p.min}–${p.max} días</div>`;
+  pchart.appendChild(row);
+  requestAnimationFrame(()=>{
+    setTimeout(()=>{ row.querySelector('.pbar-fill').style.width = (p.max/p.cap*100)+'%'; }, 60);
+  });
+});
+
+/* ---------------- tabs ---------------- */
+document.getElementById('tabbar').addEventListener('click', e=>{
+  const btn = e.target.closest('button');
+  if(!btn) return;
+  document.querySelectorAll('.tabbar button').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tabpanel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelector(`.tabpanel[data-panel="${btn.dataset.tab}"]`).classList.add('active');
+});
+
+/* ---------------- scrollspy nav ---------------- */
+const navLinks = Array.from(document.querySelectorAll('#navPills a'));
+const targets = navLinks.map(a=>document.querySelector(a.getAttribute('href')));
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      const id = '#'+entry.target.id;
+      navLinks.forEach(a=>a.classList.toggle('active', a.getAttribute('href')===id));
+    }
+  });
+}, {rootMargin:'-40% 0px -55% 0px'});
+targets.forEach(t=>{ if(t) io.observe(t); });
+</script>
+</body>
+</html>
